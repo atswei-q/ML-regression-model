@@ -7,9 +7,9 @@ app=FastAPI()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 #load trained model
-model=joblib.load(BASE_DIR / "00_model" / "house_price_model.pkl")
+model=joblib.load(BASE_DIR / "house_price_model.pkl")
 #load feature columns
-feature_columns=joblib.load(BASE_DIR / "00_model" /"feature_columns.pkl")
+feature_columns=joblib.load(BASE_DIR /"feature_columns.pkl")
 
 @app.get("/")
 def home():
@@ -29,4 +29,5 @@ def predict(data: dict):
 
     prediction = model.predict(df)
     return {"predicted_price": float(prediction[0])}
+
 
